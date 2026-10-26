@@ -2,8 +2,11 @@ class Solution:
     def leftRightDifference(self, nums: List[int]) -> List[int]:
         n = len(nums)
         ans = []
-        for i in range(n):
-            leftsum = sum(nums[:i])
-            rightsum = sum(nums[i+1:])
+        total = sum(nums)
+        rightsum = 0
+        leftsum = 0
+        for num in nums:
+            rightsum = total - num - leftsum
             ans.append(abs(leftsum - rightsum))
+            leftsum += num
         return ans
